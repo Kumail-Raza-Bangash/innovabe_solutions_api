@@ -149,7 +149,7 @@ class _RegisterViewState extends State<RegisterView> {
             const Text("Already have an Account?", style: TextStyle(color: AppColor.primaryTextColor),),
             TextButton(
               onPressed: () {
-                Get.offAll(RoutesName.loginView);
+                Get.offAndToNamed(RoutesName.loginView);
               },
               child: Text.rich(
                 TextSpan(
