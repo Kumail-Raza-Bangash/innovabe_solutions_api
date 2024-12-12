@@ -104,7 +104,7 @@ class _LoginViewState extends State<LoginView> {
             const Text("Don\'t have an Account?", style: TextStyle(color: AppColor.primaryTextColor),),
             TextButton(
               onPressed: () {
-                Get.offAndToNamed(RoutesName.homeView);
+                Get.offAndToNamed(RoutesName.registerView);
               },
               child: Text.rich(
                 TextSpan(
