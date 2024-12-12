@@ -40,6 +40,7 @@ class _LoginViewState extends State<LoginView> {
               const Icon(
                 Icons.person,
                 size: 100,
+                color: AppColor.primaryColor,
               ),
               const SizedBox(height: 20),
               Form(

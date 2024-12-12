@@ -40,6 +40,7 @@ class _RegisterViewState extends State<RegisterView> {
               const Icon(
                 Icons.person,
                 size: 100,
+                color: AppColor.primaryColor,
               ),
               const SizedBox(height: 20),
               Form(

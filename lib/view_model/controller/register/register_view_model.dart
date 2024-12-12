@@ -29,7 +29,7 @@ class RegisterController extends GetxController{
       'name': nameController.value.text,
       'email': emailController.value.text,
       'password': passwordController.value.text,
-      'conformPassword': conformPasswordController.value.text,
+      'password_confirmation': conformPasswordController.value.text,
     };
     _api.registerApi(data).then((value){
       loading.value = false;
