@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: AppColor.primaryColor,
       body: Center(
         child: Text(
-          'welcome_back'.tr,
+          'innovabe_solutions'.tr,
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: AppColor.whiteColor,
