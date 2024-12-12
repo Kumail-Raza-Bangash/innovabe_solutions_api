@@ -79,8 +79,9 @@ class _LoginViewState extends State<LoginView> {
                 border: const OutlineInputBorder(),
               ),
             ),
-              ],
-            ),),
+            ],
+            ),
+            ),
             
             const SizedBox(
               height: 20,
@@ -90,7 +91,10 @@ class _LoginViewState extends State<LoginView> {
                 width: 160,
                 loading: loginVM.loading.value,
                 onPress: () {
-                  if(_formkey.currentState!.validate()){}
+                  if(_formkey.currentState!.validate())
+                    {
+                      loginVM.loginApi();
+                    }
                 },
               ),
             ),
