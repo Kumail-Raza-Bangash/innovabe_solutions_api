@@ -9,9 +9,9 @@ class HomeViewModel extends GetxController {
   final userList = UserListModel().obs;
   RxString error = ''.obs;
 
-  void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value;
-  void setUserList(UserListModel _value) => userList.value = _value;
-  void setError(String _value) => error.value = _value;
+  void setRxRequestStatus(Status value) => rxRequestStatus.value = value;
+  void setUserList(UserListModel value) => userList.value = value;
+  void setError(String value) => error.value = value;
 
   void userListApi() {
     _api.userListApi().then((value) {

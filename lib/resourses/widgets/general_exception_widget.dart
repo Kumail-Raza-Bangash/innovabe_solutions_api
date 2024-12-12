@@ -17,7 +17,7 @@ class _GeneralExceptionWidgetState extends State<GeneralExceptionWidget> {
     final height = MediaQuery.of(context).size.height;
 
     return Padding(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 20,
       ),
       child: Column(
