@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
 import 'package:innovabe_solutions_api/view/home_view.dart';
 import 'package:innovabe_solutions_api/view/login_view.dart';
+import 'package:innovabe_solutions_api/view/register_view.dart';
 import 'package:innovabe_solutions_api/view/splash_screen.dart';
 
 class AppRoutes {
@@ -16,6 +17,13 @@ class AppRoutes {
         GetPage(
           name: RoutesName.loginView,
           page: () => const LoginView(),
+          transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 250),
+        ),
+
+        GetPage(
+          name: RoutesName.registerView,
+          page: () => const RegisterView(),
           transition: Transition.fadeIn,
           transitionDuration: const Duration(milliseconds: 250),
         ),

@@ -5,14 +5,14 @@ import 'package:innovabe_solutions_api/resourses/widgets/round_button.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
 import 'package:innovabe_solutions_api/view_model/controller/login/login_view_model.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class RegisterView extends StatefulWidget {
+  const RegisterView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<RegisterView> createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegisterViewState extends State<RegisterView> {
   final loginVM = Get.put(LoginController());
   final _formkey = GlobalKey<FormState>();
 
@@ -22,7 +22,7 @@ class _LoginViewState extends State<LoginView> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Login".tr,
+          "register".tr,
           style: const TextStyle(
             color: AppColor.whiteColor,
           ),
@@ -35,6 +35,11 @@ class _LoginViewState extends State<LoginView> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Icon(
+              Icons.fingerprint,
+              size: 20,
+            ),
+            const SizedBox(height: 20),
             Form(
               key: _formkey,
               child: Column(
@@ -103,7 +108,7 @@ class _LoginViewState extends State<LoginView> {
                   style: const TextStyle(color: AppColor.primaryTextColor),
                   children: [
                     TextSpan(
-                      text: "register".tr,
+                      text: "login".tr,
                       style: const TextStyle(color: AppColor.primaryColor),
                     ),
                   ],
