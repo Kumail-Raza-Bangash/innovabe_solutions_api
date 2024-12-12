@@ -10,6 +10,7 @@ class Languages extends Translations{
       'general_exception' : "We're unable to process your request. \n Please try again",
       'welcome_back' : 'Welcome \n Back',
       'innovabe_solutions' : 'INNOVABE \n SOLUTIONS',
+      'name' : 'Name',
       'login' : 'Login',
       'register' : 'Register',
       'email_hint' : 'Email',

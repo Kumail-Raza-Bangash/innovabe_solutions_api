@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
+import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/round_button.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
 import 'package:innovabe_solutions_api/view_model/controller/login/login_view_model.dart';
@@ -35,6 +36,11 @@ class _LoginViewState extends State<LoginView> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Icon(
+              Icons.login,
+              size: 20,
+            ),
+            const SizedBox(height: 20),
             Form(
               key: _formkey,
               child: Column(
@@ -95,18 +101,15 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             const SizedBox(height: 20),
+            const Text("Don\'t have an Account?", style: TextStyle(color: AppColor.primaryTextColor),),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.offAll(RoutesName.registerView);
+              },
               child: Text.rich(
                 TextSpan(
-                  text: "Don\'t have an Account? ",
-                  style: const TextStyle(color: AppColor.primaryTextColor),
-                  children: [
-                    TextSpan(
-                      text: "register".tr,
-                      style: const TextStyle(color: AppColor.primaryColor),
-                    ),
-                  ],
+                  text: "register".tr,
+                  style: const TextStyle(color: AppColor.primaryColor),
                 ),
               ),
             ),

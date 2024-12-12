@@ -11,7 +11,7 @@ class SplashServices {
   void isSuccess() {
     Timer(
       const Duration(seconds: 3),
-      () => Get.toNamed(RoutesName.loginView),
+      () => Get.offAll(RoutesName.loginView),
     );
   }
 }
