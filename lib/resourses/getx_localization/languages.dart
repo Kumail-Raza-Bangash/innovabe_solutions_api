@@ -9,7 +9,7 @@ class Languages extends Translations{
       'internet_exception' : "We're unable to show results. \n Please check your data \n connection", 
       'general_exception' : "We're unable to process your request. \n Please try again",
       'welcome_back' : 'Welcome \n Back',
-      'innovabe_solutions' : 'INNOVABE \n SOLUTIONS',
+      'innovabe_solutions' : 'INNOVABE \n SOLUTIONS \n API',
       'name' : 'Enter your Name',
       'login' : 'Login',
       'register' : 'Register',

@@ -24,13 +24,14 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        backgroundColor: AppColor.primaryColor,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
               "HOME PAGE ",
-              style: TextStyle(color: AppColor.primaryColor, fontSize: 20),
+              style: TextStyle(color: AppColor.whiteColor),
             ),
             InkWell(
               onTap: () {
@@ -39,7 +40,7 @@ class _HomeViewState extends State<HomeView> {
               child: const Text(
                 "LOG OUT ",
                 style:
-                    TextStyle(color: AppColor.primaryTextColor, fontSize: 20),
+                    TextStyle(color: AppColor.whiteColor),
               ),
             ),
           ],
@@ -52,7 +53,7 @@ class _HomeViewState extends State<HomeView> {
           const SizedBox(height: 20),
           const Text(
             "Welcome, ",
-            style: TextStyle(color: AppColor.primaryTextColor),
+            style: TextStyle(color: AppColor.primaryTextColor, fontSize: 20),
           ),
           Obx(
             () => Text(
