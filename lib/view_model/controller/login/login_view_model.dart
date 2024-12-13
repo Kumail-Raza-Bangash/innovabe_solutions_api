@@ -4,10 +4,9 @@ import 'package:innovabe_solutions_api/models/login/login_model.dart';
 import 'package:innovabe_solutions_api/repository/login_repo/login_repo.dart';
 import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
-import 'package:innovabe_solutions_api/view_model/controller/user_preference/user_preference_view_model.dart';
+import 'package:innovabe_solutions_api/view_model/controller/user_preferences/user_preferences.dart';
 
-class LoginViewModel extends GetxController{
-
+class LoginViewModel extends GetxController {
   UserPreferences userPreferences = UserPreferences();
 
   final _api = LoginRepository();
@@ -25,21 +24,20 @@ class LoginViewModel extends GetxController{
       'email': emailController.value.text,
       'password': passwordController.value.text,
     };
-    _api.loginApi(data).then((value){
+    _api.loginApi(data).then((value) {
       loading.value = false;
-      if(value['error'] == 'user not found'){
-        Utils.snackBar("Login", value['error']);
-      }
-      else{
-        userPreferences.saveUser(UserModel.fromJson(value)).then((value){
+      if (value['status'] != 200) {
+        Utils.snackBar("Login", value['message'] ?? 'Error occurred');
+      } else {
+        UserModel userModel = UserModel.fromJson(value);
+        userPreferences.saveUser(userModel).then((_) {
           Get.offAndToNamed(RoutesName.homeView);
-        }).onError((error, stackTrace){
-
+        }).onError((error, stackTrace) {
+          Utils.snackBar("Error", error.toString());
         });
         Utils.snackBar("Login", 'Login Successfully');
       }
-      
-    }).onError((error, stackTrace){
+    }).onError((error, stackTrace) {
       loading.value = false;
       Utils.snackBar("Error", error.toString());
     });

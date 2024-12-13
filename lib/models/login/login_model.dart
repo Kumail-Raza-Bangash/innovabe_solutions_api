@@ -1,17 +1,18 @@
-// ignore_for_file: unnecessary_this, prefer_collection_literals
-
 class UserModel {
   String? token;
+  String? name;
 
-  UserModel({this.token});
+  UserModel({this.token, this.name});
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    token = json['token'];
+    token = json['access_token'];
+    name = json['user'] != null ? json['user']['name'] : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['token'] = this.token;
+    final Map<String, dynamic> data = {};
+    data['access_token'] = token;
+    data['name'] = name;
     return data;
   }
 }

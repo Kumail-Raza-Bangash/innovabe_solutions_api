@@ -15,7 +15,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    homeController.userListApi();
+    homeController.loadUserData();
     super.initState();
   }
 
@@ -33,7 +33,9 @@ class _HomeViewState extends State<HomeView> {
               style: TextStyle(color: AppColor.primaryColor, fontSize: 20),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                homeController.logout();
+              },
               child: const Text(
                 "LOG OUT ",
                 style:
@@ -43,14 +45,21 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ),
-      body: const Row(
+      body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 20),
-          Text(
-            "This is my HOME PAGE? ",
+          const SizedBox(height: 20),
+          const Text(
+            "Welcome, ",
             style: TextStyle(color: AppColor.primaryTextColor),
+          ),
+          Obx(
+            () => Text(
+              homeController.userName.value,
+              style:
+                  const TextStyle(color: AppColor.primaryColor, fontSize: 20),
+            ),
           ),
         ],
       ),

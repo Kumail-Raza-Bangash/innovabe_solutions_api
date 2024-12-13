@@ -4,7 +4,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
-import 'package:innovabe_solutions_api/view_model/controller/user_preference/user_preference_view_model.dart';
+import 'package:innovabe_solutions_api/view_model/controller/user_preferences/user_preferences.dart';
 
 class SplashServices {
   UserPreferences userPreferences = UserPreferences();

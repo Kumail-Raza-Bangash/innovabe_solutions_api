@@ -4,14 +4,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserPreferences {
   Future<bool> saveUser(UserModel responseModel) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    sp.setString('token', responseModel.token.toString());
+    sp.setString('token', responseModel.token ?? '');
+    sp.setString('name', responseModel.name ?? '');
     return true;
   }
 
   Future<UserModel> getUser() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     String? token = sp.getString('token');
-    return UserModel(token: token);
+    String? name = sp.getString('name');
+    return UserModel(token: token, name: name);
   }
 
   Future<bool> removeUser() async {
