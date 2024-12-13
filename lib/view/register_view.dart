@@ -120,8 +120,8 @@ class _RegisterViewState extends State<RegisterView> {
                       obscuringCharacter: '*',
                       validator: (value) {
                         if (value!.isEmpty) {
-                          Utils.snackBar(
-                              "Conform Password", "Please! Enter your Password");
+                          Utils.snackBar("Conform Password",
+                              "Please! Enter your Password");
                         }
                         return null;
                       },
@@ -148,18 +148,26 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text("Already have an Account?", style: TextStyle(color: AppColor.primaryTextColor),),
-              TextButton(
-                onPressed: () {
-                  Get.offAndToNamed(RoutesName.loginView);
-                },
-                child: Text.rich(
-                  TextSpan(
-                    text: "login".tr,
-                    style: const TextStyle(color: AppColor.primaryColor),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Already have an Account? ",
+                    style: TextStyle(color: AppColor.primaryTextColor),
                   ),
-                ),
+                  InkWell(
+                    onTap: () {
+                      Get.offAndToNamed(RoutesName.loginView);
+                    },
+                    child: Text(
+                      "login".tr,
+                      style: const TextStyle(color: AppColor.primaryColor),
+                    ),
+                  ),
+                ],
               ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

@@ -103,18 +103,26 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text("Don\'t have an Account?", style: TextStyle(color: AppColor.primaryTextColor),),
-              TextButton(
-                onPressed: () {
-                  Get.offAndToNamed(RoutesName.registerView);
-                },
-                child: Text.rich(
-                  TextSpan(
-                    text: "register".tr,
-                    style: const TextStyle(color: AppColor.primaryColor),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Don\'t have an Account? ",
+                    style: TextStyle(color: AppColor.primaryTextColor),
                   ),
-                ),
+                  InkWell(
+                    onTap: () {
+                      Get.offAndToNamed(RoutesName.registerView);
+                    },
+                    child: Text(
+                      "register".tr,
+                      style: const TextStyle(color: AppColor.primaryColor),
+                    ),
+                  ),
+                ],
               ),
+              const SizedBox(height: 20),
             ],
           ),
         ),
