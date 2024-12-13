@@ -32,7 +32,7 @@ class LoginViewModel extends GetxController{
       }
       else{
         userPreferences.saveUser(UserModel.fromJson(value)).then((value){
-          Get.toNamed(RoutesName.homeView);
+          Get.offAndToNamed(RoutesName.homeView);
         }).onError((error, stackTrace){
 
         });
