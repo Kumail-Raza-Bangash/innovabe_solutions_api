@@ -25,29 +25,19 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
               "HOME PAGE ",
               style: TextStyle(color: AppColor.primaryColor, fontSize: 20),
             ),
-            const SizedBox(width: 20),
             InkWell(
               onTap: () {},
-              child: const Row(
-                children: [
-                  Text(
-                    "LOG OUT ",
-                    style: TextStyle(
-                        color: AppColor.primaryTextColor, fontSize: 20),
-                  ),
-                  Icon(
-                    Icons.offline_bolt,
-                    size: 20,
-                    color: AppColor.primaryTextColor,
-                  ),
-                ],
+              child: const Text(
+                "LOG OUT ",
+                style:
+                    TextStyle(color: AppColor.primaryTextColor, fontSize: 20),
               ),
             ),
           ],
@@ -57,7 +47,7 @@ class _HomeViewState extends State<HomeView> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(width: 20),
+          SizedBox(height: 20),
           Text(
             "This is my HOME PAGE? ",
             style: TextStyle(color: AppColor.primaryTextColor),
