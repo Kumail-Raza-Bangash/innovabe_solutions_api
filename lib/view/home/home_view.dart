@@ -4,7 +4,7 @@ import 'package:innovabe_solutions_api/data/response/status.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/general_exception_widget.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/internet_exception_widget.dart';
-import 'package:innovabe_solutions_api/view/user_list.dart';
+import 'package:innovabe_solutions_api/view/home/home_ui.dart';
 import 'package:innovabe_solutions_api/view_model/controller/home/home_view_model.dart';
 
 class HomeView extends StatefulWidget {
@@ -49,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
               );
             case Status.COMPLETED:
               return const Center(
-                child: UserList(),
+                child: HomeUI(),
               );
             case Status.ERROR:
               if (homeController.error.value == 'No internet') {

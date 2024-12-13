@@ -121,13 +121,13 @@ class _RegisterViewState extends State<RegisterView> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.snackBar("Conform Password",
-                              "Please! Enter your Password");
+                              "Please! Enter your Conform Password");
                         }
                         return null;
                       },
                       onFieldSubmitted: (value) {},
                       decoration: InputDecoration(
-                        hintText: 'password_hint'.tr,
+                        hintText: 'conform_password'.tr,
                         border: const OutlineInputBorder(),
                       ),
                     ),

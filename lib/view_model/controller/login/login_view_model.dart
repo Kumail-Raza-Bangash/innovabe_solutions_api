@@ -6,7 +6,7 @@ import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
 import 'package:innovabe_solutions_api/view_model/controller/user_preference/user_preference_view_model.dart';
 
-class LoginController extends GetxController{
+class LoginViewModel extends GetxController{
 
   UserPreferences userPreferences = UserPreferences();
 

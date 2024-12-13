@@ -14,7 +14,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final loginVM = Get.put(LoginController());
+  final loginVM = Get.put(LoginViewModel());
   final _formkey = GlobalKey<FormState>();
 
   @override
