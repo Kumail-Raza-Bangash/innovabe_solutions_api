@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
+import 'package:innovabe_solutions_api/utils/dimensions.dart';
 import 'package:innovabe_solutions_api/view_model/controller/home/home_view_model.dart';
 
 class HomeView extends StatefulWidget {
@@ -12,6 +13,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final homeController = Get.put(HomeViewModel());
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -29,40 +31,63 @@ class _HomeViewState extends State<HomeView> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "HOME PAGE ",
-              style: TextStyle(color: AppColor.whiteColor),
+            Obx(
+              () => Text(
+                homeController.userName.value,
+                style: TextStyle(
+                    color: AppColor.whiteColor, fontSize: Dimensions.font20),
+              ),
             ),
             InkWell(
               onTap: () {
                 homeController.logout();
               },
-              child: const Text(
+              child: Text(
                 "LOG OUT ",
-                style:
-                    TextStyle(color: AppColor.whiteColor),
+                style: TextStyle(
+                    color: AppColor.whiteColor, fontSize: Dimensions.font20),
               ),
             ),
           ],
         ),
       ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 20),
-          const Text(
-            "Welcome, ",
-            style: TextStyle(color: AppColor.primaryTextColor, fontSize: 20),
-          ),
-          Obx(
-            () => Text(
-              homeController.userName.value,
-              style:
-                  const TextStyle(color: AppColor.primaryColor, fontSize: 20),
+      body: ListView.builder(
+        itemCount: 5,
+        padding: EdgeInsets.all(Dimensions.height10),
+        itemBuilder: (context, index) {
+          return Card(
+            color: AppColor.whiteColor,
+            elevation: 0.5,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: AppColor.primaryColor,
+                child: Text(
+                  '${index + 1}',
+                  style: const TextStyle(color: AppColor.blackColor),
+                ),
+              ),
+              textColor: AppColor.blackColor,
+              title: const Text(
+                'Title',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              subtitle: const Text(
+                'description',
+                style: TextStyle(color: AppColor.blackColor),
+              ),
+              trailing: const Row(
+                children: [
+                  Icon(Icons.edit),
+                  Icon(Icons.delete),
+                ],
+              ),
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

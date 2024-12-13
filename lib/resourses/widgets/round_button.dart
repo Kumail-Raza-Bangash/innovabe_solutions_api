@@ -16,7 +16,7 @@ class RoundButton extends StatelessWidget {
     this.height = 40,
     this.width = 100,
     this.textColor = AppColor.whiteColor,
-    this.buttonColor = AppColor.primaryButtonColor,
+    this.buttonColor = AppColor.primaryColor,
   });
 
   @override
@@ -32,7 +32,9 @@ class RoundButton extends StatelessWidget {
         ),
         child: loading
             ? const Center(
-                child: CircularProgressIndicator(color: AppColor.whiteColor,),
+                child: CircularProgressIndicator(
+                  color: AppColor.whiteColor,
+                ),
               )
             : Center(
                 child: Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
+import 'package:innovabe_solutions_api/utils/dimensions.dart';
 import 'package:innovabe_solutions_api/view_model/services/splash_services.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -11,7 +12,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   SplashServices splashServices = SplashServices();
 
   @override
@@ -28,9 +28,9 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Text(
           'innovabe_solutions'.tr,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppColor.whiteColor,
-            fontSize: 30,
+            fontSize: Dimensions.font26,
           ),
         ),
       ),

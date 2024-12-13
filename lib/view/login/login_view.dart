@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
 import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/round_button.dart';
+import 'package:innovabe_solutions_api/utils/dimensions.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
 import 'package:innovabe_solutions_api/view_model/controller/login/login_view_model.dart';
 
@@ -24,25 +25,26 @@ class _LoginViewState extends State<LoginView> {
         centerTitle: true,
         title: Text(
           "Login".tr,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppColor.whiteColor,
+            fontSize: Dimensions.font20,
           ),
         ),
         backgroundColor: AppColor.primaryColor,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: EdgeInsets.symmetric(horizontal: Dimensions.width20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                 Icons.person,
-                size: 100,
+                size: Dimensions.iconSize24 * 4,
                 color: AppColor.primaryColor,
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: Dimensions.height20),
               Form(
                 key: _formkey,
                 child: Column(
@@ -67,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     TextFormField(
                       controller: loginVM.passwordController.value,
                       focusNode: loginVM.passwordFocusNode.value,
@@ -89,11 +91,11 @@ class _LoginViewState extends State<LoginView> {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: Dimensions.height20),
               Obx(
                 () => RoundButton(
                   title: 'login'.tr,
-                  width: 160,
+                  width: Dimensions.width15 * 10,
                   loading: loginVM.loading.value,
                   onPress: () {
                     if (_formkey.currentState!.validate()) {
@@ -102,14 +104,16 @@ class _LoginViewState extends State<LoginView> {
                   },
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: Dimensions.height20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     "Don\'t have an Account? ",
-                    style: TextStyle(color: AppColor.primaryTextColor),
+                    style: TextStyle(
+                        color: AppColor.blackColor,
+                        fontSize: Dimensions.font16),
                   ),
                   InkWell(
                     onTap: () {
@@ -117,12 +121,14 @@ class _LoginViewState extends State<LoginView> {
                     },
                     child: Text(
                       "register".tr,
-                      style: const TextStyle(color: AppColor.primaryColor),
+                      style: TextStyle(
+                          color: AppColor.primaryColor,
+                          fontSize: Dimensions.font16),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: Dimensions.height20),
             ],
           ),
         ),

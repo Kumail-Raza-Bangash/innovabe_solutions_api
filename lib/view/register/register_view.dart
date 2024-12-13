@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
 import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/round_button.dart';
+import 'package:innovabe_solutions_api/utils/dimensions.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
 import 'package:innovabe_solutions_api/view_model/controller/register/register_view_model.dart';
 
@@ -24,25 +25,26 @@ class _RegisterViewState extends State<RegisterView> {
         centerTitle: true,
         title: Text(
           "register".tr,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppColor.whiteColor,
+            fontSize: Dimensions.font20,
           ),
         ),
         backgroundColor: AppColor.primaryColor,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: EdgeInsets.symmetric(horizontal: Dimensions.width20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                 Icons.person,
-                size: 100,
+                size: Dimensions.iconSize24 * 4,
                 color: AppColor.primaryColor,
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: Dimensions.height20),
               Form(
                 key: _formkey,
                 child: Column(
@@ -67,7 +69,7 @@ class _RegisterViewState extends State<RegisterView> {
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     TextFormField(
                       controller: registerVM.emailController.value,
                       focusNode: registerVM.emailFocusNode.value,
@@ -88,7 +90,7 @@ class _RegisterViewState extends State<RegisterView> {
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     TextFormField(
                       controller: registerVM.passwordController.value,
                       focusNode: registerVM.passwordFocusNode.value,
@@ -112,7 +114,7 @@ class _RegisterViewState extends State<RegisterView> {
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     TextFormField(
                       controller: registerVM.conformPasswordController.value,
                       focusNode: registerVM.conformPasswordFocusNode.value,
@@ -134,11 +136,11 @@ class _RegisterViewState extends State<RegisterView> {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: Dimensions.height20),
               Obx(
                 () => RoundButton(
                   title: 'register'.tr,
-                  width: 160,
+                  width: Dimensions.width15 * 10,
                   loading: registerVM.loading.value,
                   onPress: () {
                     if (_formkey.currentState!.validate()) {
@@ -147,14 +149,16 @@ class _RegisterViewState extends State<RegisterView> {
                   },
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: Dimensions.height20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     "Already have an Account? ",
-                    style: TextStyle(color: AppColor.primaryTextColor),
+                    style: TextStyle(
+                        color: AppColor.blackColor,
+                        fontSize: Dimensions.font16),
                   ),
                   InkWell(
                     onTap: () {
@@ -162,12 +166,14 @@ class _RegisterViewState extends State<RegisterView> {
                     },
                     child: Text(
                       "login".tr,
-                      style: const TextStyle(color: AppColor.primaryColor),
+                      style: TextStyle(
+                          color: AppColor.primaryColor,
+                          fontSize: Dimensions.font16),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: Dimensions.height20),
             ],
           ),
         ),
