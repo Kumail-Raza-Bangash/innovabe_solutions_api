@@ -52,6 +52,10 @@ class _LoginViewState extends State<LoginView> {
                     TextFormField(
                       controller: loginVM.emailController.value,
                       focusNode: loginVM.emailFocusNode.value,
+                      style: TextStyle(
+                          color: AppColor.greyColor,
+                          fontSize: Dimensions.font20),
+                    
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.snackBar("Email", "Please! Enter your email");
@@ -66,7 +70,10 @@ class _LoginViewState extends State<LoginView> {
                       },
                       decoration: InputDecoration(
                         hintText: 'email_hint'.tr,
-                        border: const OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.email),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
+                        ),
                       ),
                     ),
                     SizedBox(height: Dimensions.height10),
@@ -74,6 +81,9 @@ class _LoginViewState extends State<LoginView> {
                       controller: loginVM.passwordController.value,
                       focusNode: loginVM.passwordFocusNode.value,
                       obscureText: true,
+                      style: TextStyle(
+                          color: AppColor.greyColor,
+                          fontSize: Dimensions.font20),
                       obscuringCharacter: '*',
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -85,7 +95,10 @@ class _LoginViewState extends State<LoginView> {
                       onFieldSubmitted: (value) {},
                       decoration: InputDecoration(
                         hintText: 'password_hint'.tr,
-                        border: const OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.remove_red_eye),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
+                        ),
                       ),
                     ),
                   ],
@@ -95,7 +108,7 @@ class _LoginViewState extends State<LoginView> {
               Obx(
                 () => RoundButton(
                   title: 'login'.tr,
-                  width: Dimensions.width15 * 10,
+                  width: Dimensions.width15 * 15,
                   loading: loginVM.loading.value,
                   onPress: () {
                     if (_formkey.currentState!.validate()) {

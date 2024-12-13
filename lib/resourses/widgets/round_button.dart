@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
+import 'package:innovabe_solutions_api/utils/dimensions.dart';
 
 class RoundButton extends StatelessWidget {
   final String title;
@@ -13,7 +14,7 @@ class RoundButton extends StatelessWidget {
     required this.title,
     required this.onPress,
     this.loading = false,
-    this.height = 40,
+    this.height = 30,
     this.width = 100,
     this.textColor = AppColor.whiteColor,
     this.buttonColor = AppColor.primaryColor,
@@ -28,12 +29,15 @@ class RoundButton extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           color: buttonColor,
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(Dimensions.radius15 * 3),
         ),
         child: loading
-            ? const Center(
-                child: CircularProgressIndicator(
-                  color: AppColor.whiteColor,
+            ? Center(
+                child: Padding(
+                  padding: EdgeInsets.all(Dimensions.width10),
+                  child: const CircularProgressIndicator(
+                    color: AppColor.whiteColor,
+                  ),
                 ),
               )
             : Center(
@@ -41,6 +45,7 @@ class RoundButton extends StatelessWidget {
                   title,
                   style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         color: textColor,
+                        fontSize: Dimensions.font20,
                       ),
                 ),
               ),

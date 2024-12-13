@@ -52,6 +52,7 @@ class _RegisterViewState extends State<RegisterView> {
                     TextFormField(
                       controller: registerVM.nameController.value,
                       focusNode: registerVM.nameFocusNode.value,
+                      style: TextStyle(color: AppColor.greyColor, fontSize: Dimensions.font20),
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.snackBar("Name", "Please! Enter your name");
@@ -66,13 +67,17 @@ class _RegisterViewState extends State<RegisterView> {
                       },
                       decoration: InputDecoration(
                         hintText: 'name'.tr,
-                        border: const OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.person),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
+                        ),
                       ),
                     ),
                     SizedBox(height: Dimensions.height10),
                     TextFormField(
                       controller: registerVM.emailController.value,
                       focusNode: registerVM.emailFocusNode.value,
+                      style: TextStyle(color: AppColor.greyColor, fontSize: Dimensions.font20),
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.snackBar("Email", "Please! Enter your email");
@@ -87,7 +92,10 @@ class _RegisterViewState extends State<RegisterView> {
                       },
                       decoration: InputDecoration(
                         hintText: 'email_hint'.tr,
-                        border: const OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.email),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
+                        ),
                       ),
                     ),
                     SizedBox(height: Dimensions.height10),
@@ -95,6 +103,7 @@ class _RegisterViewState extends State<RegisterView> {
                       controller: registerVM.passwordController.value,
                       focusNode: registerVM.passwordFocusNode.value,
                       obscureText: true,
+                      style: TextStyle(color: AppColor.greyColor, fontSize: Dimensions.font20),
                       obscuringCharacter: '*',
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -111,7 +120,10 @@ class _RegisterViewState extends State<RegisterView> {
                       },
                       decoration: InputDecoration(
                         hintText: 'password_hint'.tr,
-                        border: const OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.remove_red_eye),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
+                        ),
                       ),
                     ),
                     SizedBox(height: Dimensions.height10),
@@ -119,6 +131,7 @@ class _RegisterViewState extends State<RegisterView> {
                       controller: registerVM.conformPasswordController.value,
                       focusNode: registerVM.conformPasswordFocusNode.value,
                       obscureText: true,
+                      style: TextStyle(color: AppColor.greyColor, fontSize: Dimensions.font20),
                       obscuringCharacter: '*',
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -130,7 +143,10 @@ class _RegisterViewState extends State<RegisterView> {
                       onFieldSubmitted: (value) {},
                       decoration: InputDecoration(
                         hintText: 'conform_password'.tr,
-                        border: const OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.remove_red_eye),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
+                        ),
                       ),
                     ),
                   ],
@@ -140,7 +156,7 @@ class _RegisterViewState extends State<RegisterView> {
               Obx(
                 () => RoundButton(
                   title: 'register'.tr,
-                  width: Dimensions.width15 * 10,
+                  width: Dimensions.width15 * 15,
                   loading: registerVM.loading.value,
                   onPress: () {
                     if (_formkey.currentState!.validate()) {

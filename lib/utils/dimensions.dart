@@ -1,13 +1,23 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+
+FlutterView view = WidgetsBinding.instance.platformDispatcher.views.first;
+
+// // Dimensions in physical pixels (px)
+// Size size = view.physicalSize;
+// double width = size.width;
+// double height = size.height;
+
+// Dimensions in logical pixels (dp)
+Size size = view.physicalSize / view.devicePixelRatio;
+double width = size.width;
+double height = size.height;
 
 class Dimensions {
-  static late double screenHeight;
-  static late double screenWidth;
+  static double screenHeight = height; //My OPPO f17 height is 925
+  static double screenWidth = width; //My OPPO f17 width is 421 OPPO f17 width is 421
 
-  static void init(BuildContext context) {
-    screenHeight = MediaQuery.of(context).size.height;
-    screenWidth = MediaQuery.of(context).size.width;
-  }
 
   //dynamic height for passing and margin
   static double height10 = screenHeight / 92.5; // 925/10
