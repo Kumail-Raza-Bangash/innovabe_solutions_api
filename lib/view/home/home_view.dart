@@ -20,8 +20,9 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    homeController.loadUserData();
     super.initState();
+    homeController.loadUserData();
+    todoViewModel.getTodos();
   }
 
   @override

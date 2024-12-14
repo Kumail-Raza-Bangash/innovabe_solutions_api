@@ -15,27 +15,44 @@ class TodoViewModel extends GetxController {
 
   Future<void> getTodos() async {
     loading.value = true;
-    UserPreferences().getUser().then((user) async {
-      try {
-        todos.value = await _todoRepo.getTodos(user.token!);
-      } catch (e) {
-        Utils.snackBar("Error", e.toString());
-      } finally {
-        loading.value = false;
-      }
-    });
+
+    try {
+      // Fetch user token (ensure you have a valid token)
+      UserPreferences().getUser().then((user) async {
+        final response = await _todoRepo.getTodos(user.token!);
+
+        // Map response to TodoModel
+        todos.value = response
+            .map((todo) => TodoModel.fromJson(todo))
+            .toList();
+
+        // Log fetched todos
+        print("Todos Fetched: ${todos.length}");
+      });
+    } catch (e) {
+      print("Error Fetching Todos: $e");
+      Utils.snackBar("Error", e.toString());
+    } finally {
+      loading.value = false;
+    }
+    
   }
 
   Future<void> postTodo() async {
     UserPreferences().getUser().then((user) async {
       try {
-        TodoModel todo = TodoModel(
-          name: titleController.value.text,
-          value: descriptionController.value.text,
-        );
-        await _todoRepo.postTodo(user.token!, todo);
+        // Prepare the data
+        Map<String, String> data = {
+          'name': titleController.value.text,
+        };
+
+        // Call the repository to send the POST request
+        await _todoRepo.postTodo(user.token!, data);
+
         Utils.snackBar("Success", "Todo Added Successfully");
-        await postTodo(); // Refresh todos after adding
+
+        // Refresh todos after adding
+        await getTodos();
         Get.back();
       } catch (e) {
         Utils.snackBar("Error", e.toString());
