@@ -1,20 +1,20 @@
 class TodoModel {
   int? id;
-  String? title;
-  String? description;
+  String? name;
+  String? value;
 
-  TodoModel({this.id, this.title, this.description});
+  TodoModel({this.id, this.name, this.value});
 
   TodoModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    title = json['title'];
-    description = json['description'];
+    name = json['name'];
+    value = json['value'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
-    data['title'] = this.title;
-    data['description'] = this.description;
+    data['name'] = this.name;
+    data['value'] = this.value;
     return data;
   }
 }

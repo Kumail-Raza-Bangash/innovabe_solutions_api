@@ -30,8 +30,8 @@ class TodoViewModel extends GetxController {
     UserPreferences().getUser().then((user) async {
       try {
         TodoModel todo = TodoModel(
-          title: titleController.value.text,
-          description: descriptionController.value.text,
+          name: titleController.value.text,
+          value: descriptionController.value.text,
         );
         await _todoRepo.postTodo(user.token!, todo);
         Utils.snackBar("Success", "Todo Added Successfully");

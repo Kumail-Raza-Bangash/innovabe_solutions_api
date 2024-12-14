@@ -74,8 +74,8 @@ class _HomeViewState extends State<HomeView> {
           itemBuilder: (context, index) {
             final todo = todoViewModel.todos[index];
             return ListTile(
-              title: Text(todo.title ?? "No Title"),
-              subtitle: Text(todo.description ?? "No Description"),
+              title: Text(todo.name ?? "No Title"),
+              subtitle: Text(todo.value ?? "No Description"),
             );
           },
         );
