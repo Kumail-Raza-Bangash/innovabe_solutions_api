@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
 import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
+import 'package:innovabe_solutions_api/resourses/widgets/custom_text_form_field.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/round_button.dart';
 import 'package:innovabe_solutions_api/utils/dimensions.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
@@ -49,10 +50,9 @@ class _RegisterViewState extends State<RegisterView> {
                 key: _formkey,
                 child: Column(
                   children: [
-                    TextFormField(
+                    CustomTextFormField(
                       controller: registerVM.nameController.value,
                       focusNode: registerVM.nameFocusNode.value,
-                      style: TextStyle(color: AppColor.greyColor, fontSize: Dimensions.font20),
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.snackBar("Name", "Please! Enter your name");
@@ -65,19 +65,13 @@ class _RegisterViewState extends State<RegisterView> {
                             registerVM.nameFocusNode.value,
                             registerVM.emailFocusNode.value);
                       },
-                      decoration: InputDecoration(
-                        hintText: 'name'.tr,
-                        prefixIcon: const Icon(Icons.person),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
-                        ),
-                      ),
+                      hintText: 'name'.tr,
+                      icon: const Icon(Icons.person),
                     ),
                     SizedBox(height: Dimensions.height10),
-                    TextFormField(
+                    CustomTextFormField(
                       controller: registerVM.emailController.value,
                       focusNode: registerVM.emailFocusNode.value,
-                      style: TextStyle(color: AppColor.greyColor, fontSize: Dimensions.font20),
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.snackBar("Email", "Please! Enter your email");
@@ -90,21 +84,14 @@ class _RegisterViewState extends State<RegisterView> {
                             registerVM.emailFocusNode.value,
                             registerVM.passwordFocusNode.value);
                       },
-                      decoration: InputDecoration(
-                        hintText: 'email_hint'.tr,
-                        prefixIcon: const Icon(Icons.email),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
-                        ),
-                      ),
+                      hintText: 'email_hint'.tr,
+                      icon: const Icon(Icons.email),
                     ),
                     SizedBox(height: Dimensions.height10),
-                    TextFormField(
+                    CustomTextFormField(
                       controller: registerVM.passwordController.value,
                       focusNode: registerVM.passwordFocusNode.value,
                       obscureText: true,
-                      style: TextStyle(color: AppColor.greyColor, fontSize: Dimensions.font20),
-                      obscuringCharacter: '*',
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.snackBar(
@@ -118,21 +105,14 @@ class _RegisterViewState extends State<RegisterView> {
                             registerVM.passwordFocusNode.value,
                             registerVM.conformPasswordFocusNode.value);
                       },
-                      decoration: InputDecoration(
-                        hintText: 'password_hint'.tr,
-                        prefixIcon: const Icon(Icons.remove_red_eye),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
-                        ),
-                      ),
+                      hintText: 'password_hint'.tr,
+                      icon: const Icon(Icons.remove_red_eye),
                     ),
                     SizedBox(height: Dimensions.height10),
-                    TextFormField(
+                    CustomTextFormField(
                       controller: registerVM.conformPasswordController.value,
                       focusNode: registerVM.conformPasswordFocusNode.value,
                       obscureText: true,
-                      style: TextStyle(color: AppColor.greyColor, fontSize: Dimensions.font20),
-                      obscuringCharacter: '*',
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.snackBar("Conform Password",
@@ -141,13 +121,8 @@ class _RegisterViewState extends State<RegisterView> {
                         return null;
                       },
                       onFieldSubmitted: (value) {},
-                      decoration: InputDecoration(
-                        hintText: 'conform_password'.tr,
-                        prefixIcon: const Icon(Icons.remove_red_eye),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
-                        ),
-                      ),
+                      hintText: 'password_hint'.tr,
+                      icon: const Icon(Icons.remove_red_eye),
                     ),
                   ],
                 ),

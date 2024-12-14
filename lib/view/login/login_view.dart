@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
 import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
+import 'package:innovabe_solutions_api/resourses/widgets/custom_text_form_field.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/round_button.dart';
 import 'package:innovabe_solutions_api/utils/dimensions.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
@@ -49,13 +50,9 @@ class _LoginViewState extends State<LoginView> {
                 key: _formkey,
                 child: Column(
                   children: [
-                    TextFormField(
+                    CustomTextFormField(
                       controller: loginVM.emailController.value,
                       focusNode: loginVM.emailFocusNode.value,
-                      style: TextStyle(
-                          color: AppColor.greyColor,
-                          fontSize: Dimensions.font20),
-                    
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.snackBar("Email", "Please! Enter your email");
@@ -68,23 +65,14 @@ class _LoginViewState extends State<LoginView> {
                             loginVM.emailFocusNode.value,
                             loginVM.passwordFocusNode.value);
                       },
-                      decoration: InputDecoration(
-                        hintText: 'email_hint'.tr,
-                        prefixIcon: const Icon(Icons.email),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
-                        ),
-                      ),
+                      hintText: 'email_hint'.tr,
+                      icon: const Icon(Icons.email),
                     ),
                     SizedBox(height: Dimensions.height10),
-                    TextFormField(
+                    CustomTextFormField(
                       controller: loginVM.passwordController.value,
                       focusNode: loginVM.passwordFocusNode.value,
                       obscureText: true,
-                      style: TextStyle(
-                          color: AppColor.greyColor,
-                          fontSize: Dimensions.font20),
-                      obscuringCharacter: '*',
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.snackBar(
@@ -93,13 +81,8 @@ class _LoginViewState extends State<LoginView> {
                         return null;
                       },
                       onFieldSubmitted: (value) {},
-                      decoration: InputDecoration(
-                        hintText: 'password_hint'.tr,
-                        prefixIcon: const Icon(Icons.remove_red_eye),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(Dimensions.radius20*5),
-                        ),
-                      ),
+                      hintText: 'password_hint'.tr,
+                      icon: const Icon(Icons.remove_red_eye),
                     ),
                   ],
                 ),
