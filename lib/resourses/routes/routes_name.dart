@@ -11,4 +11,6 @@ class RoutesName {
 
   //home screen routes names
   static const String homeView = '/home_screen';
+  static const String addTodoView = '/add_todo_view';
+
 }

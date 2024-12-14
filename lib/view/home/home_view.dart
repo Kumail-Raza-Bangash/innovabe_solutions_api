@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
 import 'package:innovabe_solutions_api/utils/dimensions.dart';
+import 'package:innovabe_solutions_api/view/home/add_todo_view.dart';
 import 'package:innovabe_solutions_api/view_model/controller/home/home_view_model.dart';
+import 'package:innovabe_solutions_api/view_model/controller/todo/todo_view_model.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -14,6 +16,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final homeController = Get.put(HomeViewModel());
   bool isLoading = true;
+  final TodoViewModel todoViewModel = Get.put(TodoViewModel());
 
   @override
   void initState() {
@@ -23,6 +26,8 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    todoViewModel.fetchTodos();
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -38,57 +43,44 @@ class _HomeViewState extends State<HomeView> {
                     color: AppColor.whiteColor, fontSize: Dimensions.font20),
               ),
             ),
-            InkWell(
-              onTap: () {
-                homeController.logout();
-              },
-              child: Text(
-                "LOG OUT ",
-                style: TextStyle(
-                    color: AppColor.whiteColor, fontSize: Dimensions.font20),
-              ),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Get.to(() => AddTodoView());
+                  },
+                  icon: const Icon(Icons.add),
+                ),
+                SizedBox(width: Dimensions.width10 / 2),
+                IconButton(
+                  onPressed: () {
+                    homeController.logout();
+                  },
+                  icon: const Icon(Icons.logout),
+                ),
+              ],
             ),
           ],
         ),
       ),
-      body: ListView.builder(
-        itemCount: 5,
-        padding: EdgeInsets.all(Dimensions.height10),
-        itemBuilder: (context, index) {
-          return Card(
-            color: AppColor.whiteColor,
-            elevation: 0.5,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundColor: AppColor.primaryColor,
-                child: Text(
-                  '${index + 1}',
-                  style: const TextStyle(color: AppColor.blackColor),
-                ),
-              ),
-              textColor: AppColor.blackColor,
-              title: const Text(
-                'Title',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-              subtitle: const Text(
-                'description',
-                style: TextStyle(color: AppColor.blackColor),
-              ),
-              trailing: const Row(
-                children: [
-                  Icon(Icons.edit),
-                  Icon(Icons.delete),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+      body: Obx(() {
+        if (todoViewModel.loading.value) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (todoViewModel.todos.isEmpty) {
+          return const Center(child: Text("No Todos Found"));
+        }
+        return ListView.builder(
+          itemCount: todoViewModel.todos.length,
+          itemBuilder: (context, index) {
+            final todo = todoViewModel.todos[index];
+            return ListTile(
+              title: Text(todo.title ?? "No Title"),
+              subtitle: Text(todo.description ?? "No Description"),
+            );
+          },
+        );
+      }),
     );
   }
 }

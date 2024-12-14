@@ -9,11 +9,12 @@ import 'package:http/http.dart' as http;
 
 class NetworkApiServices extends BaseApiServices {
   @override
-  Future getGetApiServices(String url) async {
+  Future getGetApiServices(String url, {Map<String, String>? headers}) async {
     dynamic responseJson;
     try {
-      final response =
-          await http.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
+      final response = await http
+          .get(Uri.parse(url), headers: headers)
+          .timeout(const Duration(seconds: 10));
       responseJson = returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Exception');
@@ -24,13 +25,17 @@ class NetworkApiServices extends BaseApiServices {
   }
 
   @override
-  Future getPostApiServices(String url, dynamic data) async {
+  Future getPostApiServices(String url, dynamic data,
+      {Map<String, String>? headers}) async {
     dynamic responseJson;
     try {
-      Response response = await http.post(
-        Uri.parse(url),
-        body: data,
-      ).timeout(const Duration(seconds: 10));
+      Response response = await http
+          .post(
+            Uri.parse(url),
+            body: data,
+            headers: headers,
+          )
+          .timeout(const Duration(seconds: 10));
 
       responseJson = returnResponse(response);
     } on SocketException {
@@ -38,7 +43,7 @@ class NetworkApiServices extends BaseApiServices {
     } on RequestTimeOut {
       throw RequestTimeOut('Request Time Out Exception');
     }
-    if(kDebugMode){
+    if (kDebugMode) {
       print(responseJson);
     }
     return responseJson;
@@ -55,10 +60,10 @@ class NetworkApiServices extends BaseApiServices {
 
       case 404:
         throw UnAuthorisedException(response.body.toString());
-        
+
       default:
         throw FetchDataException(
-            'Error occured while communicating with server with status code ${response.statusCode}');
+            'Error occurred while communicating with server with status code ${response.statusCode}');
     }
   }
 }
