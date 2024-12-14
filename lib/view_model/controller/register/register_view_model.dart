@@ -35,8 +35,8 @@ class RegisterController extends GetxController {
       if (value['error'] == 'user not found') {
         Utils.snackBar("Register", value['error']);
       } else {
-        userPreferences.saveUser(UserModel.fromJson(value)).then((value) {
-          Get.toNamed(RoutesName.loginView);
+        userPreferences.saveUser(LoginModel.fromJson(value)).then((value) {
+          Get.offAndToNamed(RoutesName.loginView);
         }).onError((error, stackTrace) {});
         Utils.snackBar("Register", 'Register Successfully');
       }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/custom_text_form_field.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/round_button.dart';
 import 'package:innovabe_solutions_api/utils/dimensions.dart';
-import 'package:innovabe_solutions_api/view_model/controller/todo/todo_view_model.dart';
 
 class AddTodoView extends StatefulWidget {
   AddTodoView({Key? key}) : super(key: key);
@@ -14,7 +12,7 @@ class AddTodoView extends StatefulWidget {
 }
 
 class _AddTodoViewState extends State<AddTodoView> {
-  final TodoViewModel todoViewModel = Get.put(TodoViewModel());
+  // final TodoViewModel todoViewModel = Get.put(TodoViewModel());
   final _formkey = GlobalKey<FormState>();
 
   @override
@@ -38,7 +36,7 @@ class _AddTodoViewState extends State<AddTodoView> {
                 children: [
                   SizedBox(height: Dimensions.height30),
                   CustomTextFormField(
-                    controller: todoViewModel.titleController.value,
+                    //controller: todoViewModel.titleController.value,
                     hintText: 'Title',
                     icon: const Icon(Icons.title),
                   ),
@@ -80,7 +78,7 @@ class _AddTodoViewState extends State<AddTodoView> {
               width: Dimensions.width15 * 15,
               onPress: () {
                 if (_formkey.currentState!.validate()) {
-                  todoViewModel.postTodo();
+                  //todoViewModel.postTodo();
                 }
               },
             ),

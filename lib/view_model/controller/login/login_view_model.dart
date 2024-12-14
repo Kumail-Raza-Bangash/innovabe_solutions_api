@@ -29,7 +29,7 @@ class LoginViewModel extends GetxController {
       if (value['status'] != 200) {
         Utils.snackBar("Login", value['message'] ?? 'Error occurred');
       } else {
-        UserModel userModel = UserModel.fromJson(value);
+        LoginModel userModel = LoginModel.fromJson(value);
         userPreferences.saveUser(userModel).then((_) {
           Get.offAndToNamed(RoutesName.homeView);
         }).onError((error, stackTrace) {

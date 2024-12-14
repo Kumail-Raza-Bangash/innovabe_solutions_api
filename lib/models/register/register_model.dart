@@ -1,11 +1,11 @@
 // ignore_for_file: unnecessary_this, prefer_collection_literals
 
-class UserModel {
+class RegisterUserModel {
   String? token;
 
-  UserModel({this.token});
+  RegisterUserModel({this.token});
 
-  UserModel.fromJson(Map<String, dynamic> json) {
+  RegisterUserModel.fromJson(Map<String, dynamic> json) {
     token = json['token'];
   }
 

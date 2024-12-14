@@ -17,18 +17,25 @@ class HomeViewModel extends GetxController {
   RxString userName = ''.obs;
 
   void loadUserData() async {
-    UserModel user = await userPreferences.getUser();
-    userName.value = user.name ?? 'Guest';
+    try {
+      LoginModel user = await userPreferences.getUser();
+      userName.value = user.user?.name ?? "Guest";
+    } catch (e) {
+      setError("Failed to load user data: $e");
+    }
   }
 
   void logout() async {
-    UserModel user = await userPreferences.getUser();
-    String? token = user.token;
+    try {
+      LoginModel user = await userPreferences.getUser();
+      String? token = user.accessToken; // Access the access token from LoginModel
 
-    // Logic to send logout request using token
+      // Perform any token-related cleanup if necessary (e.g., API call to invalidate token)
 
-    // Clear user data after API call
-    await userPreferences.removeUser();
-    Get.offAllNamed(RoutesName.loginView);
+      await userPreferences.removeUser(); // Remove user data from preferences
+      Get.offAllNamed(RoutesName.loginView); // Navigate to the login screen
+    } catch (e) {
+      setError("Logout failed: $e");
+    }
   }
 }
