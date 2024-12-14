@@ -33,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
       onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(color: AppColor.greyColor, fontSize: Dimensions.font16),
         prefixIcon: icon,
         prefixIconColor: AppColor.primaryColor,
         constraints: BoxConstraints(
