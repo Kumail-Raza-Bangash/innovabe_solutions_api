@@ -5,7 +5,7 @@ import 'package:innovabe_solutions_api/resourses/app_url/app_url.dart';
 class TodoRepository {
   final _apiServices = NetworkApiServices();
 
-  Future<List<TodoModel>> fetchTodos(String token) async {
+  Future<List<TodoModel>> getTodos(String token) async {
     dynamic response = await _apiServices.getGetApiServices(
       AppUrl.todoUrl, 
       headers: {'Authorization': 'Bearer $token'}
@@ -13,7 +13,7 @@ class TodoRepository {
     return (response as List).map((e) => TodoModel.fromJson(e)).toList();
   }
 
-  Future<dynamic> addTodo(String token, TodoModel todo) async {
+  Future<dynamic> postTodo(String token, TodoModel todo) async {
     return await _apiServices.getPostApiServices(
       AppUrl.todoUrl, 
       todo.toJson(),

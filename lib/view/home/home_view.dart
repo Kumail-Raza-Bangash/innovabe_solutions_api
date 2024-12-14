@@ -26,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    todoViewModel.fetchTodos();
+    todoViewModel.getTodos();
 
     return Scaffold(
       appBar: AppBar(
@@ -34,13 +34,12 @@ class _HomeViewState extends State<HomeView> {
         backgroundColor: AppColor.primaryColor,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Obx(
               () => Text(
                 homeController.userName.value,
                 style: TextStyle(
-                    color: AppColor.whiteColor, fontSize: Dimensions.font20),
+                    color: AppColor.whiteColor, fontSize: Dimensions.font26),
               ),
             ),
             Row(
@@ -49,14 +48,14 @@ class _HomeViewState extends State<HomeView> {
                   onPressed: () {
                     Get.to(() => AddTodoView());
                   },
-                  icon: const Icon(Icons.add),
+                  icon: const Icon(Icons.add, color: AppColor.whiteColor),
                 ),
                 SizedBox(width: Dimensions.width10 / 2),
                 IconButton(
                   onPressed: () {
                     homeController.logout();
                   },
-                  icon: const Icon(Icons.logout),
+                  icon: const Icon(Icons.logout, color: AppColor.whiteColor),
                 ),
               ],
             ),

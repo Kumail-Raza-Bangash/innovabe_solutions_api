@@ -13,11 +13,11 @@ class TodoViewModel extends GetxController {
   final titleController = TextEditingController().obs;
   final descriptionController = TextEditingController().obs;
 
-  Future<void> fetchTodos() async {
+  Future<void> getTodos() async {
     loading.value = true;
     UserPreferences().getUser().then((user) async {
       try {
-        todos.value = await _todoRepo.fetchTodos(user.token!);
+        todos.value = await _todoRepo.getTodos(user.token!);
       } catch (e) {
         Utils.snackBar("Error", e.toString());
       } finally {
@@ -26,16 +26,16 @@ class TodoViewModel extends GetxController {
     });
   }
 
-  Future<void> addTodo() async {
+  Future<void> postTodo() async {
     UserPreferences().getUser().then((user) async {
       try {
         TodoModel todo = TodoModel(
           title: titleController.value.text,
           description: descriptionController.value.text,
         );
-        await _todoRepo.addTodo(user.token!, todo);
+        await _todoRepo.postTodo(user.token!, todo);
         Utils.snackBar("Success", "Todo Added Successfully");
-        await fetchTodos(); // Refresh todos after adding
+        await postTodo(); // Refresh todos after adding
         Get.back();
       } catch (e) {
         Utils.snackBar("Error", e.toString());
