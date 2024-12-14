@@ -21,7 +21,6 @@ class _AddTodoViewState extends State<AddTodoView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: AppColor.primaryColor,
         title: Text(
           "Add Todo",
@@ -37,31 +36,53 @@ class _AddTodoViewState extends State<AddTodoView> {
               key: _formkey,
               child: Column(
                 children: [
+                  SizedBox(height: Dimensions.height30),
                   CustomTextFormField(
                     controller: todoViewModel.titleController.value,
                     hintText: 'Title',
                     icon: const Icon(Icons.title),
                   ),
-                  SizedBox(width: Dimensions.height15),
-                  CustomTextFormField(
-                    controller: todoViewModel.descriptionController.value,
-                    hintText: 'Description',
-                    icon: const Icon(Icons.title),
+                  SizedBox(height: Dimensions.height15),
+                  TextFormField(
+                    style: TextStyle(
+                        color: AppColor.greyColor, fontSize: Dimensions.font16),
+                    decoration: InputDecoration(
+                      hintText: "Message...",
+                      hintStyle: TextStyle(
+                          color: AppColor.greyColor,
+                          fontSize: Dimensions.font16),
+                      prefixIcon: const Icon(Icons.message,
+                          color: AppColor.primaryColor),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius20 * 5),
+                        borderSide: const BorderSide(
+                          color: AppColor.primaryColor,
+                          width: 2,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius20 * 5),
+                        borderSide: const BorderSide(
+                          color: AppColor.greyColor,
+                          width: 1,
+                        ),
+                      ),
+                    ),
                   ),
-                  SizedBox(width: Dimensions.height30),
+                  SizedBox(height: Dimensions.height30),
                 ],
               ),
             ),
-            Obx(
-              () => RoundButton(
-                title: 'Add Todo',
-                width: Dimensions.width15 * 15,
-                onPress: () {
-                  if (_formkey.currentState!.validate()) {
-                    todoViewModel.postTodo();
-                  }
-                },
-              ),
+            RoundButton(
+              title: 'Add Todo',
+              width: Dimensions.width15 * 15,
+              onPress: () {
+                if (_formkey.currentState!.validate()) {
+                  todoViewModel.postTodo();
+                }
+              },
             ),
           ],
         ),
