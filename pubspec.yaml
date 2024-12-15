@@ -24,17 +24,17 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  assets:
-    - assets/images/
-    - assets/fonts/
+  # assets:
+  #   - assets/images/
+  #   - assets/fonts/
 
-  fonts:
-    - family: Lora-Regular
-      fonts:
-        - asset: assets/fonts/Lora-Regular.ttf
+  # fonts:
+  #   - family: Lora-Regular
+  #     fonts:
+  #       - asset: assets/fonts/Lora-Regular.ttf
     
-    - family: Lora-Bold
-      fonts:
-        - asset: assets/fonts/Lora-Bold.ttf
-          weight: 700
+  #   - family: Lora-Bold
+  #     fonts:
+  #       - asset: assets/fonts/Lora-Bold.ttf
+  #         weight: 700
 
