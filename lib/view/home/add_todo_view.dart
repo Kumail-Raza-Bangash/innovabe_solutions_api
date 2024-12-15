@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/custom_text_form_field.dart';
 import 'package:innovabe_solutions_api/resourses/widgets/round_button.dart';
@@ -20,10 +21,27 @@ class _AddTodoViewState extends State<AddTodoView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.primaryColor,
-        title: Text(
-          "Add Todo",
-          style: TextStyle(
-              color: AppColor.whiteColor, fontSize: Dimensions.font26),
+        automaticallyImplyLeading: false,
+        title: Row(
+          
+          children: [
+            GestureDetector(
+              onTap: () {
+                Get.back();
+              },
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: AppColor.whiteColor,
+                size: Dimensions.font16,
+              ),
+            ),
+            SizedBox(width: Dimensions.width10/2),
+            Text(
+              "Add Todo",
+              style: TextStyle(
+                  color: AppColor.whiteColor, fontSize: Dimensions.font26),
+            ),
+          ],
         ),
       ),
       body: Padding(

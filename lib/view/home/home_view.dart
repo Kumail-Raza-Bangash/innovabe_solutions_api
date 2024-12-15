@@ -113,16 +113,16 @@ class _HomeViewState extends State<HomeView> {
                         Text(
                           'Status: ${todo.status ?? 'No Status'}',
                           style: TextStyle(
-                            fontSize: Dimensions.font16,
+                            fontSize: Dimensions.font16-4,
                             color: AppColor.greyColor,
                           ),
                         ),
                       ],
                     ),
-                    trailing: const Icon(
+                    trailing: Icon(
                       Icons.arrow_forward_ios,
                       color: AppColor.primaryColor,
-                      size: 16,
+                      size: Dimensions.font16,
                     ),
                     onTap: () {},
                   ),
