@@ -4,9 +4,9 @@ import 'package:innovabe_solutions_api/models/login/login_model.dart';
 import 'package:innovabe_solutions_api/repository/register_repo/register_repo.dart';
 import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
-import 'package:innovabe_solutions_api/view_model/controller/user_preferences/user_preferences.dart';
+import 'package:innovabe_solutions_api/view_model/services/user_preferences/user_preferences.dart';
 
-class RegisterController extends GetxController {
+class RegisterViewModel extends GetxController {
   UserPreferences userPreferences = UserPreferences();
 
   final _api = RegisterRepository();

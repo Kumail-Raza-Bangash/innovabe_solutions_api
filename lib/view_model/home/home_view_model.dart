@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/data/response/status.dart';
 import 'package:innovabe_solutions_api/models/login/login_model.dart';
 import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
-import 'package:innovabe_solutions_api/view_model/controller/user_preferences/user_preferences.dart';
+import 'package:innovabe_solutions_api/view_model/services/user_preferences/user_preferences.dart';
 
 class HomeViewModel extends GetxController {
   final rxRequestStatus = Status.LOADING.obs;
@@ -18,22 +18,23 @@ class HomeViewModel extends GetxController {
 
   void loadUserData() async {
     try {
-      LoginModel user = await userPreferences.getUser();
-      userName.value = user.user?.name ?? "Guest";
+      // LoginModel user = await userPreferences.getUser();
+      // userName.value = user.user?.name ?? "Guest";
+      final loginModel = await userPreferences.getUser();
+      userName.value = loginModel.user?.name ?? "Unknown User";
     } catch (e) {
-      setError("Failed to load user data: $e");
+      // setError("Failed to load user data: $e");
+      userName.value = "Error fetching user";
     }
   }
 
   void logout() async {
     try {
       LoginModel user = await userPreferences.getUser();
-      String? token = user.accessToken; // Access the access token from LoginModel
+      String? token = user.accessToken; 
 
-      // Perform any token-related cleanup if necessary (e.g., API call to invalidate token)
-
-      await userPreferences.removeUser(); // Remove user data from preferences
-      Get.offAllNamed(RoutesName.loginView); // Navigate to the login screen
+      await userPreferences.removeUser(); 
+      Get.offAllNamed(RoutesName.loginView); 
     } catch (e) {
       setError("Logout failed: $e");
     }

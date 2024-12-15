@@ -6,7 +6,7 @@ import 'package:innovabe_solutions_api/resourses/widgets/custom_text_form_field.
 import 'package:innovabe_solutions_api/resourses/widgets/round_button.dart';
 import 'package:innovabe_solutions_api/utils/dimensions.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
-import 'package:innovabe_solutions_api/view_model/controller/register/register_view_model.dart';
+import 'package:innovabe_solutions_api/view_model/register/register_view_model.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -16,7 +16,7 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  final registerVM = Get.put(RegisterController());
+  final registerVM = Get.put(RegisterViewModel());
   final _formkey = GlobalKey<FormState>();
 
   @override

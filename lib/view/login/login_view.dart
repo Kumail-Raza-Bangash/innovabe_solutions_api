@@ -6,7 +6,7 @@ import 'package:innovabe_solutions_api/resourses/widgets/custom_text_form_field.
 import 'package:innovabe_solutions_api/resourses/widgets/round_button.dart';
 import 'package:innovabe_solutions_api/utils/dimensions.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
-import 'package:innovabe_solutions_api/view_model/controller/login/login_view_model.dart';
+import 'package:innovabe_solutions_api/view_model/login/login_view_model.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
