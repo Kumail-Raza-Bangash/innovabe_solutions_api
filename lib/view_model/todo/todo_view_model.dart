@@ -18,11 +18,8 @@ class TodoListViewModel extends GetxController {
     try {
       rxRequestStatus.value = Status.LOADING;
 
-      var response = await _api.todoListApi();
-      var responseData = response as List;
-
-      todoList.value =
-          responseData.map((item) => TodoListModel.fromJson(item)).toList();
+      List<TodoListModel> response = await _api.todoListApi();
+      todoList.value = response;
 
       rxRequestStatus.value = Status.COMPLETED;
     } catch (e) {
