@@ -78,12 +78,23 @@ class _HomeViewState extends State<HomeView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: Dimensions.height10 / 2),
-                        Text(
-                          'Status: ${todo.status ?? 'No Status'}',
-                          style: TextStyle(
-                            fontSize: Dimensions.font16 - 4,
-                            color: AppColor.greyColor,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              'Status: ',
+                              style: TextStyle(
+                                fontSize: Dimensions.font16 - 4,
+                                color: AppColor.greyColor,
+                              ),
+                            ),
+                            Text(
+                              todo.status ?? 'No Status',
+                              style: TextStyle(
+                                fontSize: Dimensions.font16 - 4,
+                                color: AppColor.greenColor,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
