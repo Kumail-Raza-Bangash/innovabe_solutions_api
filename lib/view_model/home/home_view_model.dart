@@ -18,12 +18,9 @@ class HomeViewModel extends GetxController {
 
   void loadUserData() async {
     try {
-      // LoginModel user = await userPreferences.getUser();
-      // userName.value = user.user?.name ?? "Guest";
       final loginModel = await userPreferences.getUser();
-      userName.value = loginModel.user?.name ?? "Unknown User";
+      userName.value = loginModel.user?.name ?? "Guest";
     } catch (e) {
-      // setError("Failed to load user data: $e");
       userName.value = "Error fetching user";
     }
   }

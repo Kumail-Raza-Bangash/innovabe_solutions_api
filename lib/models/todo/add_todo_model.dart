@@ -1,11 +1,11 @@
-class TodoResponseModel {
+class AddTodoModel {
   int? status;
   String? message;
   int? id;
 
-  TodoResponseModel({this.status, this.message, this.id});
+  AddTodoModel({this.status, this.message, this.id});
 
-  TodoResponseModel.fromJson(Map<String, dynamic> json) {
+  AddTodoModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     id = json['id'];
@@ -13,9 +13,9 @@ class TodoResponseModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = status;
-    data['message'] = message;
-    data['id'] = id;
+    data['status'] = this.status;
+    data['message'] = this.message;
+    data['id'] = this.id;
     return data;
   }
 }

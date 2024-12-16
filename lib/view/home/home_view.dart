@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:innovabe_solutions_api/data/response/status.dart';
 import 'package:innovabe_solutions_api/resourses/colors.dart';
+import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
 import 'package:innovabe_solutions_api/utils/dimensions.dart';
-import 'package:innovabe_solutions_api/view/home/add_todo_view.dart';
 import 'package:innovabe_solutions_api/view_model/home/home_view_model.dart';
 import 'package:innovabe_solutions_api/view_model/todo/todo_view_model.dart';
 
@@ -29,39 +29,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: AppColor.primaryColor,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Obx(
-              () => Text(
-                homeVM.userName.value,
-                style: TextStyle(
-                    color: AppColor.whiteColor, fontSize: Dimensions.font26),
-              ),
-            ),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Get.to(() => AddTodoView());
-                  },
-                  icon: const Icon(Icons.add, color: AppColor.whiteColor),
-                ),
-                SizedBox(width: Dimensions.width10 / 2),
-                IconButton(
-                  onPressed: () {
-                    homeVM.logout();
-                  },
-                  icon: const Icon(Icons.logout, color: AppColor.whiteColor),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      appBar: _appbar(),
       body: Obx(() {
         switch (todoListVM.rxRequestStatus.value) {
           case Status.LOADING:
@@ -113,7 +81,7 @@ class _HomeViewState extends State<HomeView> {
                         Text(
                           'Status: ${todo.status ?? 'No Status'}',
                           style: TextStyle(
-                            fontSize: Dimensions.font16-4,
+                            fontSize: Dimensions.font16 - 4,
                             color: AppColor.greyColor,
                           ),
                         ),
@@ -131,6 +99,42 @@ class _HomeViewState extends State<HomeView> {
             );
         }
       }),
+    );
+  }
+
+  AppBar _appbar() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: AppColor.primaryColor,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Obx(
+            () => Text(
+              homeVM.userName.value,
+              style: TextStyle(
+                  color: AppColor.whiteColor, fontSize: Dimensions.font26),
+            ),
+          ),
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  Get.toNamed(RoutesName.addTodoView);
+                },
+                icon: const Icon(Icons.add, color: AppColor.whiteColor),
+              ),
+              SizedBox(width: Dimensions.width10 / 2),
+              IconButton(
+                onPressed: () {
+                  homeVM.logout();
+                },
+                icon: const Icon(Icons.logout, color: AppColor.whiteColor),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

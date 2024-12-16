@@ -46,6 +46,10 @@ class NetworkApiServices extends BaseApiServices {
         dynamic responseJson = jsonDecode(response.body);
         return responseJson;
 
+      case 201:
+        dynamic responseJson = jsonDecode(response.body);
+        return responseJson;
+
       case 400:
         throw BadRequetException(response.body.toString());
 
