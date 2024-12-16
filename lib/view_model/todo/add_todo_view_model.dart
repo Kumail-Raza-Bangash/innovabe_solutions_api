@@ -5,6 +5,7 @@ import 'package:innovabe_solutions_api/repository/todo_repo/add_todo_repo.dart';
 import 'package:innovabe_solutions_api/resourses/routes/routes_name.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
 import 'package:innovabe_solutions_api/view_model/services/user_preferences/user_preferences.dart';
+import 'package:innovabe_solutions_api/view_model/todo/todo_view_model.dart';
 
 class AddTodoViewModel extends GetxController {
   final userPreferences = UserPreferences();
@@ -32,7 +33,8 @@ class AddTodoViewModel extends GetxController {
 
       if (todoResponse.status == 201 || todoResponse.status == 200) {
         Utils.snackBar("Success", todoResponse.message ?? "Todo added!");
-        Get.toNamed(RoutesName.homeView);
+        Get.find<TodoListViewModel>().todoListApi();
+        Get.offAndToNamed(RoutesName.homeView);
       } else {
         Utils.snackBar("Failed", todoResponse.message ?? "Failed to add Todo");
       }

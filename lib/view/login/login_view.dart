@@ -8,15 +8,11 @@ import 'package:innovabe_solutions_api/utils/dimensions.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
 import 'package:innovabe_solutions_api/view_model/login/login_view_model.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class LoginView extends StatelessWidget {
+  LoginView({super.key});
 
-  @override
-  State<LoginView> createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
   final loginVM = Get.put(LoginViewModel());
+
   final _formkey = GlobalKey<FormState>();
 
   @override

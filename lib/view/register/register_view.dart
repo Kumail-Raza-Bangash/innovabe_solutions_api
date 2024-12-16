@@ -8,15 +8,11 @@ import 'package:innovabe_solutions_api/utils/dimensions.dart';
 import 'package:innovabe_solutions_api/utils/utils.dart';
 import 'package:innovabe_solutions_api/view_model/register/register_view_model.dart';
 
-class RegisterView extends StatefulWidget {
-  const RegisterView({super.key});
+class RegisterView extends StatelessWidget {
+  RegisterView({super.key});
 
-  @override
-  State<RegisterView> createState() => _RegisterViewState();
-}
-
-class _RegisterViewState extends State<RegisterView> {
   final registerVM = Get.put(RegisterViewModel());
+
   final _formkey = GlobalKey<FormState>();
 
   @override
