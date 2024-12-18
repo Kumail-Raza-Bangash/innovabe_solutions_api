@@ -5,6 +5,7 @@ import 'package:innovabe_solutions_api/resourses/getx_localization/languages.dar
 import 'package:innovabe_solutions_api/resourses/routes/routes.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
